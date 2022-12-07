@@ -1,0 +1,288 @@
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:zekr/controller/home_controller.dart';
+import 'package:zekr/services/settings_services.dart';
+
+class Home extends StatelessWidget {
+
+  @override
+  Widget build(context) {
+    final HomeController c = Get.put(HomeController());
+
+    return Scaffold(
+        body: Container(
+          color: Colors.black,
+          alignment: Alignment.center,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+
+              SizedBox(height: 40,),
+
+              Container(child: Obx(() => Text("${c.count}", style: TextStyle(color: Colors.white, fontSize: 50),))),
+
+              SizedBox(height: 70,),
+
+              InkWell(onTap: c.zero ,child: Icon(Icons.replay_circle_filled,color: Colors.white,size: 75,),),
+
+              SizedBox(height: 70,),
+
+              InkWell(onTap: (){
+                c.increment;
+                // SettingsServices.sharedPreferences.setInt("count",c.count);
+              }, child: Icon(Icons.data_saver_on,color: Colors.white,size: 300,),),
+
+        ],),),
+    );
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                // DropdownButton(items: ["لاَ إِلَهَ إِلاَّ اللَّهَ","الْحَمْدُ للّهِ","سُبْحَانَ اللَّهِ"].map((e) => DropdownMenuItem(child: Text("$e",style: TextStyle(color: Colors.white),),value: e,)).toList(),
+                // onChanged: (val) {
+                //   setState(() {
+                //     zekr = val;
+                //   });
+                // },
+                // dropdownColor: Colors.black,
+                // style: TextStyle(color: Colors.white,fontSize: 35),
+                // hint: Text("لاَ إِلَهَ إِلاَّ اللَّهَ",style: TextStyle(color: Colors.white)),
+                // itemHeight: 80,
+                // underline: Divider(thickness: 0,),
+                // value: zekr,
+                // ),
+
+
+
+
+
+
+
+
+
+                  // FutureBuilder(
+                  //   future: getLoc(),
+                  //   builder: (context, snapshot) {
+                  //     if (snapshot.connectionState == ConnectionState.waiting){
+                  //       return const Center(child: CircularProgressIndicator());
+                  //     }
+                  //     final myCoordinates = Coordinates(latitude,longitude);
+
+                  //     return Row(
+                  //       mainAxisAlignment: MainAxisAlignment.center,
+                  //       children: [
+
+                  //         Container(
+                  //           padding: const EdgeInsets.symmetric(horizontal: 0,vertical: 15),
+                  //           decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),color: Colors.red),
+                  //           child: Column(
+                  //             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  //             children: [
+                  //               const Text("الشروق", style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold),),
+                  //               Text(DateFormat.jm().format(prayerTimes.sunrise), style: const TextStyle(fontSize: 10,fontWeight: FontWeight.bold))
+                  //             ],
+                  //           ),
+                  //         ),
+
+                  //         Container(
+                  //           padding: const EdgeInsets.symmetric(horizontal: 0,vertical: 15),
+                  //           decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),color: Colors.red),
+                  //           child: Column(
+                  //             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  //             children: [
+                  //               const Text("الفجر", style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold),),
+                  //               Text(DateFormat.jm().format(prayerTimes.fajr), style: const TextStyle(fontSize: 10,fontWeight: FontWeight.bold))
+                  //             ],
+                  //           ),
+                  //         ),
+                          
+                  //         Container(
+                  //           padding: const EdgeInsets.symmetric(horizontal: 0,vertical: 15),
+                  //           decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),color: Colors.red),
+                  //           child: Column(
+                  //             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  //             children: [
+                  //               const Text("الظهر", style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold),),
+                  //               Text(DateFormat.jm().format(prayerTimes.dhuhr), style: const TextStyle(fontSize: 10,fontWeight: FontWeight.bold))
+                  //             ],
+                  //           ),
+                  //         ),
+
+                  //         Container(
+                  //           padding: const EdgeInsets.symmetric(horizontal: 0,vertical: 15),
+                  //           decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),color: Colors.red),
+                  //           child: Column(
+                  //             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  //             children: [
+                  //               const Text("العصر", style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold),),
+                  //               Text(DateFormat.jm().format(prayerTimes.asr), style: const TextStyle(fontSize: 10,fontWeight: FontWeight.bold))
+                  //             ],
+                  //           ),
+                  //         ),
+
+                  //         Container(
+                  //           padding: const EdgeInsets.symmetric(horizontal: 0,vertical: 15),
+                  //           decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),color: Colors.red),
+                  //           child: Column(
+                  //             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  //             children: [
+                  //               const Text("المغرب", style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold),),
+                  //               Text(DateFormat.jm().format(prayerTimes.maghrib), style: const TextStyle(fontSize: 10,fontWeight: FontWeight.bold))
+                  //             ],
+                  //           ),
+                  //         ),
+
+                  //         Container(
+                  //           padding: const EdgeInsets.symmetric(horizontal: 0,vertical: 15),
+                  //           decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),color: Colors.red),
+                  //           child: Column(
+                  //             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  //             children: [
+                  //               const Text("العشاء", style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold),),
+                  //               Text(DateFormat.jm().format(prayerTimes.isha), style: const TextStyle(fontSize: 10,fontWeight: FontWeight.bold))
+                  //             ],
+                  //           ),
+                  //         ),
+
+                  //       ],
+                  //     );
+                  //   },
+                  // ),
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                  // var uniqueId = DateTime.now().second.toString();
+
+                    //     await Workmanager().registerPeriodicTask(
+                    // uniqueId,
+                    // task,
+                    // initialDelay: const Duration(seconds: 3),
+                    // frequency: Duration(seconds: 10),
+                    // constraints: Constraints(networkType: NetworkType.connected));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+PageView(
+          children: homeController.pages,
+          onPageChanged: (index) {
+            homeController.selectedIndex.value = index;
+          },
+        ),
+
+
+
+
+
+
+
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:zekr/controller/azkar_controller.dart';
+import 'package:zekr/view/azkar/azkar_list.dart';
+
+List<AzkarList> azkarList = [];
+
+class AzkarElSapah extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text('20'.tr),centerTitle: true,),
+      body: PageView.builder(
+        itemCount: db.length,
+        itemBuilder: (context, index) {
+          return Column(
+            children: [
+              AzkarS(Azkar: db[index]),
+            ],
+          );
+        },
+      )
+    );
+  }
+}
+
+class AzkarS extends StatelessWidget{
+
+  final Azkar;
+  AzkarS({required this.Azkar});
+
+  Widget build(BuildContext context){
+    return ListTile(title: Text('${Azkar['category']}'));
+  }
+}
+
+
+
+
+
+          return Text('${azkarList[index].category}',style: const TextStyle(color: Colors.black),);
